@@ -1,7 +1,7 @@
 ZF2-ApiRest
 ======================
 
-Simple Example Api Rest with Zend Framework 2
+Simple Example Api Rest with Zend Framework 2 and Doctrine 2
 
 ## Install with Composer
 
