@@ -13,7 +13,6 @@
 		"zendframework/zftool": "dev-master",                                                                                                                            
     	"doctrine/doctrine-orm-module":" ^0.9.1",
     	"doctrine/migrations": "1.0.*",
-    	"doctrine/data-fixtures": "dev-master",
         "zfr/zfr-cors": "1.*"    
 	}
 }
