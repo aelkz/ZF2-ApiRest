@@ -52,16 +52,6 @@ return array(
                     ),
                 ),
             ),
-            'application-fixture' => array(
-        		'type' => 'segment',
-        		'options' => array(
-    				'route' => '/fixture/application/load',
-    				'defaults' => array(
-						'controller' => __NAMESPACE__ . '\Controller\FixtureLoader',
-						'action' => 'load'
-        			),
-        		),
-        	),
         ),
     ),
     'service_manager' => array(

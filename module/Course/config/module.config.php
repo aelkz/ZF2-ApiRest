@@ -1,6 +1,6 @@
 <?php
 
-namespace Course;        
+namespace Course;
 
 return array(
     'doctrine' => array(
@@ -33,19 +33,9 @@ return array(
                     'defaults' => array(
                         'controller' => __NAMESPACE__ . '\Controller\Course'
                     )
-                )
+                ),
             ),
-             __NAMESPACE__ . 'service-fixture' => array(
-                'type' => 'segment',
-                'options' => array(
-                    'route' => '/fixture/course/load',
-                    'defaults' => array(
-                        'controller' => __NAMESPACE__ . '\Controller\Fixture',
-                        'action' => 'load'
-                    )
-                )
-            )
-    	)
+    	),
     ),
     'view_manager' => array(
         'template_path_stack' => array(
@@ -62,8 +52,8 @@ return array(
     ),
     'service_manager' => array(
         'invokables' => array(
-            'application.course.service' => __NAMESPACE__ . '\Service\Course\Course'         
-        ), 
+            'application.course.service' => __NAMESPACE__ . '\Service\Course\Course'
+        ),
         'factories' => array(
             'application.course.orm'                    => __NAMESPACE__ . '\Service\DoctrineFactory',
             'application.course.formservice.addcourse'  => __NAMESPACE__ . '\Service\CourseAddFactory',
