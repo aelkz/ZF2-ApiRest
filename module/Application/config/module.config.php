@@ -76,7 +76,6 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
-            'Application\Controller\FixtureLoader' => 'Application\Controller\FixtureLoaderController'
         ),
     ),
     'view_manager' => array(
