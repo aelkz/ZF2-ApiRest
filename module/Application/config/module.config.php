@@ -60,10 +60,7 @@ return array(
             'Zend\Log\LoggerAbstractServiceFactory',
         ),
         'factories' => array(
-            'translator'                  => 'Zend\Mvc\Service\TranslatorServiceFactory',
-            'application.application.orm' => __NAMESPACE__ . '\Service\DoctrineFactory',
-            'application.fixture.loader'  => __NAMESPACE__ . '\Service\ApplicationFixtureLoaderFactory'
-
+            'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
         ),
     ),
     'translator' => array(
