@@ -1,5 +1,6 @@
-ZF2-ApiRest
-======================
+# ZF2-ApiRest
+
+[![Build Status](https://travis-ci.org/Tony133/ZF2-ApiRest.svg?branch=master)](https://travis-ci.org/Tony133/ZF2-ApiRest)
 
 Simple Example Api Rest with Zend Framework 2 and Doctrine 2
 
