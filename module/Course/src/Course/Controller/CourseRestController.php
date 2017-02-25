@@ -12,44 +12,44 @@ use Zend\Debug\Debug as ZDebug;
 
 class CourseRestController extends AbstractRestfulController
 {
-	protected $allowedCollectionMethods = array(
-		'GET',
-		'POST',
-		'OPTIONS'
-	);
+    protected $allowedCollectionMethods = array(
+        'GET',
+        'POST',
+        'OPTIONS'
+    );
 
-	protected $allowedResourceMethods = array(
-		'GET',
-		'PATCH',
-		'PUT',
-		'DELETE'
-	);
+    protected $allowedResourceMethods = array(
+        'GET',
+        'PATCH',
+        'PUT',
+        'DELETE'
+    );
 
     public function checkOptions(MvcEvent $e)
-	{
-		$matches  = $e->getRouteMatch();
-		$response = $e->getResponse();
-		$request  = $e->getRequest();
-		$method   = $request->getMethod();
+    {
+        $matches  = $e->getRouteMatch();
+        $response = $e->getResponse();
+        $request  = $e->getRequest();
+        $method   = $request->getMethod();
 
-		if ($matches->getParam('id', false)) {
-			if (!in_array($method, $this->allowedResourceMethods)) {
-				$response->setStatusCode(405);
-				return $response;
-			}
-			return;
-		}
+        if ($matches->getParam('id', false)) {
+            if (!in_array($method, $this->allowedResourceMethods)) {
+                $response->setStatusCode(405);
+                return $response;
+            }
+            return;
+        }
 
-		if (!in_array($method, $this->allowedCollectionMethods)) {
-			$response->setStatusCode(405);
-			return $response;
-		}
-	}
+        if (!in_array($method, $this->allowedCollectionMethods)) {
+            $response->setStatusCode(405);
+            return $response;
+        }
+    }
 
-	public function injectLinkHeader(MvcEvent $e)
-	{
-		$response = $e->getResponse();
-		$headers  = $response->getHeaders();
+    public function injectLinkHeader(MvcEvent $e)
+    {
+        $response = $e->getResponse();
+        $headers  = $response->getHeaders();
     }
 
     public function getList()
@@ -61,7 +61,7 @@ class CourseRestController extends AbstractRestfulController
             $this->params()->fromRoute()
         );
 
-		$service = $this->getServiceLocator()->get('application.course.service');
+        $service = $this->getServiceLocator()->get('application.course.service');
 
         try {
             $data = $service->getList($params);
@@ -76,7 +76,7 @@ class CourseRestController extends AbstractRestfulController
     public function get($id)
     {
         $this->getResponse()->setStatusCode(Response::STATUS_CODE_200);
-		$service = $this->getServiceLocator()->get('application.course.service');
+        $service = $this->getServiceLocator()->get('application.course.service');
 
         try {
             $data = $service->get($id);
@@ -88,10 +88,9 @@ class CourseRestController extends AbstractRestfulController
             $data = $e->getMessage();
         }
 
-		return new JsonModel(array(
-			'data' => $data
-		));
-
+        return new JsonModel(array(
+            'data' => $data
+        ));
     }
 
     public function create($data)
@@ -117,20 +116,20 @@ class CourseRestController extends AbstractRestfulController
     public function update($id, $data)
     {
         $this->getResponse()->setStatusCode(Response::STATUS_CODE_200);
-		$service = $this->getServiceLocator()->get('application.course.service');
+        $service = $this->getServiceLocator()->get('application.course.service');
 
-		try {
-		    $data = $service->update($id, $data);
-		} catch (InvalidDataException $e) {
+        try {
+            $data = $service->update($id, $data);
+        } catch (InvalidDataException $e) {
             $this->getResponse()->setStatusCode(Response::STATUS_CODE_500);
             $data = Json::decode($e->getMessage());
         } catch (CourseNotFoundException $e) {
-		    $this->getResponse()->setStatusCode(Response::STATUS_CODE_404);
-		    $data = Json::decode($e->getMessage());
-		} catch (\Exception $e) {
-		    $this->getResponse()->setStatusCode(Response::STATUS_CODE_500);
-		    $data = $e->getMessage();
-		}
+            $this->getResponse()->setStatusCode(Response::STATUS_CODE_404);
+            $data = Json::decode($e->getMessage());
+        } catch (\Exception $e) {
+            $this->getResponse()->setStatusCode(Response::STATUS_CODE_500);
+            $data = $e->getMessage();
+        }
 
         return new JsonModel(array(
             'data' => $data
@@ -140,23 +139,23 @@ class CourseRestController extends AbstractRestfulController
     public function delete($id)
     {
         $this->getResponse()->setStatusCode(Response::STATUS_CODE_200);
-		$service = $this->getServiceLocator()->get('application.course.service');
+        $service = $this->getServiceLocator()->get('application.course.service');
 
         try {
-		    $data = $service->delete($id);
-		} catch (InvalidDataException $e) {
+            $data = $service->delete($id);
+        } catch (InvalidDataException $e) {
             $this->getResponse()->setStatusCode(Response::STATUS_CODE_500);
             $data = Json::decode($e->getMessage());
         } catch (CourseNotFoundException $e) {
             $this->getResponse()->setStatusCode(Response::STATUS_CODE_404);
             $data = Json::decode($e->getMessage());
         } catch (\Exception $e) {
-		    $this->getResponse()->setStatusCode(Response::STATUS_CODE_500);
-		    $data = $e->getMessage();
-		}
+            $this->getResponse()->setStatusCode(Response::STATUS_CODE_500);
+            $data = $e->getMessage();
+        }
 
-    	return new JsonModel(array(
+        return new JsonModel(array(
             'data' => $data
-		));
+        ));
     }
 }

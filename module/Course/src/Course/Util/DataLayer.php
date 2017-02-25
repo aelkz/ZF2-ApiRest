@@ -14,49 +14,49 @@ use DoctrineModule\Stdlib\Hydrator\DoctrineObject;
  */
 class DataLayer
 {
-	protected static $serviceLocator;
+    protected static $serviceLocator;
 
-	public static function setServiceLocator(ServiceLocatorInterface $serviceLocator)
-	{
-		self::$serviceLocator = $serviceLocator;
-	}
+    public static function setServiceLocator(ServiceLocatorInterface $serviceLocator)
+    {
+        self::$serviceLocator = $serviceLocator;
+    }
 
-	public static function getServiceLocator()
-	{
-		return self::$serviceLocator;
-	}
+    public static function getServiceLocator()
+    {
+        return self::$serviceLocator;
+    }
 
-	public static function normalize(array $data)
-	{
-		$normalized = array();
+    public static function normalize(array $data)
+    {
+        $normalized = array();
 
-		if(null !== $id) {
-			$normalized['id'] = $id;
-		}
+        if(null !== $id) {
+            $normalized['id'] = $id;
+        }
 
-		$normalized = array_merge($data, $normalized);
+        $normalized = array_merge($data, $normalized);
 
-		return $normalized;
-	}
+        return $normalized;
+    }
 
-	public static function denormalize(array $data)
-	{
-		$em = self::getServiceLocator()->get('application.course.orm');
-		$hydrator = new DoctrineObject($em);
-		$denormalized = array();
+    public static function denormalize(array $data)
+    {
+        $em = self::getServiceLocator()->get('application.course.orm');
+        $hydrator = new DoctrineObject($em);
+        $denormalized = array();
 
-		$denormalized = array_merge(array_map(function($element) {
-			if($element instanceof \Datetime) {
-				return $element->format('Y-m-d H:i:s');
-			}
+        $denormalized = array_merge(array_map(function($element) {
+            if($element instanceof \Datetime) {
+                return $element->format('Y-m-d H:i:s');
+            }
 
-			if(!is_scalar($element)) {
-				return $element;
-			}
+            if(!is_scalar($element)) {
+                return $element;
+            }
 
-			return (string) $element;
-		}, $data), $denormalized);
+            return (string) $element;
+        }, $data), $denormalized);
 
-		return $denormalized;
-	}
+        return $denormalized;
+    }
 }
