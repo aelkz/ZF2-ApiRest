@@ -3,11 +3,11 @@
 namespace Course\Controller;
 
 use Zend\Mvc\Controller\AbstractRestfulController;
-use	Zend\View\Model\JsonModel;
-use	Zend\Http\Response;
-use	Zend\EventManager\EventManagerInterface;
-use	Zend\Mvc\MvcEvent;
-use	Zend\Json\Json;
+use Zend\View\Model\JsonModel;
+use Zend\Http\Response;
+use Zend\EventManager\EventManagerInterface;
+use Zend\Mvc\MvcEvent;
+use Zend\Json\Json;
 use Zend\Debug\Debug as ZDebug;
 
 class CourseRestController extends AbstractRestfulController
