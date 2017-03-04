@@ -1,6 +1,6 @@
 {
-    "name": "zendframework/skeleton-application",
-    "description": "Skeleton Application for ZF2",
+    "name": "tony133/zf2-api-rest",
+    "description": "Simple Example Api Rest with Zend Framework 2 and Doctrine 2",
     "license": "BSD-3-Clause",
     "keywords": [
         "framework",
@@ -10,7 +10,7 @@
     "require": {
         "php": ">=5.5",
         "zendframework/zendframework": "~2.5",
-		"zendframework/zftool": "dev-master",
+        "zendframework/zftool": "dev-master",
     	"doctrine/doctrine-orm-module":" ^0.9.1",
     	"doctrine/migrations": "1.0.*",
         "zfr/zfr-cors": "1.*"
