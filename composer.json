@@ -1,7 +1,7 @@
 {
     "name": "tony133/zf2-api-rest",
     "description": "Simple Example Api Rest with Zend Framework 2 and Doctrine 2",
-    "license": "BSD-3-Clause",
+    "license": "MIT",
     "keywords": [
         "framework",
         "zf2"
