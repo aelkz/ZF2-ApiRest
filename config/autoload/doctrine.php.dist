@@ -7,11 +7,11 @@ return array(
                 'doctrine_type_mappings' => array('enum' => 'string'),
                 'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
                 'params' => array(
-                    'host' => '172.30.188.155',
-                    'port' => '3306',
-                    'user'     => 'mysql',
-                    'password' => 'mysql',
-                    'dbname' => 'phpzf2',
+                    'host' => getEnv('MYSQL_SERVICE_HOST'),
+                    'port' => getEnv('MYSQL_SERVICE_PORT'),
+                    'user' => getEnv('MYSQL_SERVICE_USER'),
+                    'password' => getEnv('MYSQL_SERVICE_PASSWORD'),
+                    'dbname' => getEnv('MYSQL_SERVICE_SCHEMA'),
                     'driverOptions' => array(
                         1002 => 'SET NAMES utf8'
                     )
