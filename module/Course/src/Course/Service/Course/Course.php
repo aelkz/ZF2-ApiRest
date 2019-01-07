@@ -54,6 +54,7 @@ class Course implements
         $em = $this->getServiceLocator()->get('application.course.orm');
     	$entityRepository = $em->getRepository('Course\Entity\Course');
     	$form = $this->getServiceLocator()->get('application.course.formservice.addcourse');
+
     	$entity = new CourseEntity();
     	$form->bind($entity);
     	$form->setData($data);

@@ -9,9 +9,9 @@ return array(
                 'params' => array(
                     'host' => '127.0.0.1',
                     'port' => '3306',
-                    'user'     => 'myusername',
-                    'password' => 'mypassword',
-                    'dbname' => 'test',
+                    'user'     => 'mysql',
+                    'password' => 'mysql',
+                    'dbname' => 'phpzf2',
                     'driverOptions' => array(
                         1002 => 'SET NAMES utf8'
                     )
