@@ -4,19 +4,19 @@ namespace Course;
 
 return array(
     'doctrine' => array(
-        'driver' => array(
-            __NAMESPACE__ . '_driver' => array(
-                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
-                'cache' => 'array',
-                'paths' => array(
-                    __DIR__ . '/../src/' . __NAMESPACE__ . '/Entity'
-                ),
-            ),
+        'connection' => array(
             'orm_default' => array(
-                'class'   => 'Doctrine\ORM\Mapping\Driver\DriverChain',
-                'drivers' => array(
-                    // register `my_annotation_driver` for any entity under namespace `My\Namespace`
-                    __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver'
+                'doctrine_type_mappings' => array('enum' => 'string'),
+                'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
+                'params' => array(
+                    'host' => getEnv('MYSQL_SERVICE_HOST'),
+                    'port' => getEnv('MYSQL_SERVICE_PORT'),
+                    'user' => getEnv('MYSQL_SERVICE_USER'),
+                    'password' => getEnv('MYSQL_SERVICE_PASSWORD'),
+                    'dbname' => getEnv('MYSQL_SERVICE_SCHEMA'),
+                    'driverOptions' => array(
+                        1002 => 'SET NAMES utf8'
+                    )
                 )
             ),
         ),
