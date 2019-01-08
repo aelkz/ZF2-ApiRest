@@ -12,6 +12,7 @@ return array(
                     'user' => getEnv('MYSQL_SERVICE_USER'),
                     'password' => getEnv('MYSQL_SERVICE_PASSWORD'),
                     'dbname' => getEnv('MYSQL_SERVICE_SCHEMA'),
+                    'charset'  => 'UTF8',
                     'driverOptions' => array(
                         1002 => 'SET NAMES utf8'
                     )
