@@ -25,6 +25,7 @@ class CourseRestController extends AbstractRestfulController
         'DELETE'
     );
 
+    // called from setEventManager function
     public function checkOptions(MvcEvent $e)
     {
         $matches  = $e->getRouteMatch();
@@ -50,6 +51,26 @@ class CourseRestController extends AbstractRestfulController
     {
         $response = $e->getResponse();
         $headers  = $response->getHeaders();
+    }
+
+    protected function _getOptions()
+    {
+        if ($this->params->fromRoute('id', false)) {
+            // we have an ID, so we're working if an specific resource
+            return $this->allowedResourceMethods;
+        }
+
+        // ID not found, we're working if a collection
+        return $this->allowedCollectionMethods;
+    }
+
+    public function options() {
+        $response = $this->getResponse();
+
+        // if in Options array, allow
+        $response->getHeaders()->addHeaderLine('Allow', implode(',', $this->_getOptions()));
+
+        return $response;
     }
 
     public function getList()
